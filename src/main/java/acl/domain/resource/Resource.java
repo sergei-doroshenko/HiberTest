@@ -7,7 +7,10 @@ import java.util.Collection;
  */
 public class Resource {
     private Long id;
-    private String name;
+    private String firstName;
+    private String lastName;
+    private Double baseCost;
+    private Long currencyId;
     private transient Collection<Skill> skills;
 
     public Resource() {
@@ -21,12 +24,36 @@ public class Resource {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Double getBaseCost() {
+        return baseCost;
+    }
+
+    public void setBaseCost(Double baseCost) {
+        this.baseCost = baseCost;
+    }
+
+    public Long getCurrencyId() {
+        return currencyId;
+    }
+
+    public void setCurrencyId(Long currencyId) {
+        this.currencyId = currencyId;
     }
 
     public Collection<Skill> getSkills() {
@@ -39,7 +66,7 @@ public class Resource {
 
     @Override
     public String toString() {
-        return "Resource{" + id + ", " + name +
+        return "Resource{" + id + ", " + firstName + " " + lastName +
                 ", skills:" + skills +
                 '}';
     }

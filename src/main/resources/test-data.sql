@@ -9,10 +9,13 @@ INSERT INTO skill_types(id, skill_name) VALUES (1, 'Windows');
 INSERT INTO skill_types(id, skill_name) VALUES (2, 'Lunix');
 INSERT INTO skill_types(id, skill_name) VALUES (3, 'MacOS');
 
-INSERT INTO resources(id, res_name) VALUES (1, 'Ivan');
-INSERT INTO resources(id, res_name) VALUES (2, 'Andrey');
-INSERT INTO resources(id, res_name) VALUES (3, 'Nikolai');
-INSERT INTO resources(id, res_name) VALUES (4, 'Sam');
+INSERT INTO resources(id, first_name, last_name, base_cost, currency_id)
+VALUES (1, 'Ivan', 'Drago', 100, 1);
+INSERT INTO resources(id, first_name, last_name, base_cost, currency_id)
+VALUES (2, 'Denis', 'Danchenkov', 200, 1);
+INSERT INTO resources(id, first_name, last_name, base_cost, currency_id)
+VALUES (3, 'Sarah', 'Connor', 300, 1);
+
 
 INSERT INTO res_skills(id, res_id, skill_id) VALUES (1, 1, 1);
 INSERT INTO res_skills(id, res_id, skill_id) VALUES (2, 1, 2);

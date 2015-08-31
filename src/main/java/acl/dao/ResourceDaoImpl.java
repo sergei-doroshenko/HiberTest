@@ -57,8 +57,8 @@ public class ResourceDaoImpl {
 // select resource.name, skill.type
         Query query = session.createQuery("from Resource as resource, Skill_ent as skill"
 
-        + " where resource.id = skill.resourceId"
-        + " and (skill.type.id = 1 or skill.type.id = 2)");
+                + " where resource.id = skill.resourceId"
+                + " and (skill.type.id = 1 or skill.type.id = 2)");
 
 
         try {
@@ -169,4 +169,22 @@ public class ResourceDaoImpl {
         }
     }
 
+    @Transactional(readOnly = true)
+    public List<Resource> getResourceCostChages01() {
+        Session session = getSessionFactory().openSession();
+
+        Query query = session.createQuery(
+                "from Resource as resource"
+        );
+
+        try {
+            List<Resource> arr = query.list();
+
+            return arr;
+        } catch (HibernateException e) {
+            String errorMessage = "Error when executing getResourceCostChages01. entityName=" + ENTITY_NAME;
+            e.printStackTrace();
+            throw new RuntimeException(errorMessage, e);
+        }
+    }
 }
