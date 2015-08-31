@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="acl.domain">
+    <class name="acl.domain.GroupDO" table="GROUPS" entity-name="Groups"
+           dynamic-insert="true" dynamic-update="true" >
+
+        <id name="id" type="java.lang.Long" column="id">
+            <generator class="native">
+                <param name="sequence">groups_sequence</param>
+            </generator>
+        </id>
+
+        <property name="name" type="java.lang.String" column="title" unique="true" />
+
+        <property name="parentId" type="java.lang.Long" column="parent_id" unique="false" />
+
+        <set name="privileges" table="Group_Privilege" lazy="true">
+            <key>
+                <column name="Group_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="Privileges">
+                <column name="Privilege_id"/>
+            </many-to-many>
+        </set>
+
+        <bag name="resourcesIds" table="resource_group" order-by="resource_id" lazy="false">
+            <key column="group_id"/>
+            <element type="text" column="resource_id"/>
+        </bag>
+
+    </class>
+</hibernate-mapping>
