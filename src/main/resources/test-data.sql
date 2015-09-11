@@ -28,3 +28,33 @@ INSERT INTO res_skills(id, res_id, skill_id) VALUES (6, 3, 3);
 
 INSERT INTO res_skills(id, res_id, skill_id) VALUES (7, 4, 1);
 
+/**********************************************************************************************/
+INSERT INTO currency(id, name, letter_code, digit_code, symbol, default_currency)
+    VALUES (1, 'United States dollar', 'USD', 840, '$', TRUE);
+
+INSERT INTO currency(id, name, letter_code, digit_code, symbol, default_currency)
+    VALUES (2, 'Euro', 'EUR', 978, '€', FALSE );
+
+INSERT INTO currency(id, name, letter_code, digit_code, symbol, default_currency)
+    VALUES (3, 'Russian ruble', 'RUB', 643, '₽', FALSE );
+
+INSERT INTO resource(id, first_name, last_name, native_name, login, active, sex, email, notify_unfilled_ts, emp_currency, nwo_prohibited)
+    VALUES (1, 'Sergey', 'Nemchinsky', 'Сергей Немчинский', 'snemchinsky', TRUE, TRUE, 'snemchinsky@google.com', TRUE, 1, TRUE);
+
+INSERT INTO resource(id, first_name, last_name, native_name, login, active, sex, email, notify_unfilled_ts, emp_currency, nwo_prohibited)
+    VALUES (2, 'Ivan', 'Okhlobistin', 'Иван Охлобыстин', 'iokhlobistin', TRUE, TRUE, 'iokhlobistin@google.com', TRUE, 1, TRUE);
+
+INSERT INTO resource_cost (start_date, resource_id, base_cost, currency_id)
+    VALUES ('2015-01-01', 1, 1000, 1);
+
+INSERT INTO resource_cost (start_date, resource_id, base_cost, currency_id)
+    VALUES ('2015-03-01', 1, 500, 2);
+
+INSERT INTO exchange_currency_rates (date, currency_from, currency_to, exchange_rate)
+    VALUES ('2015-01-01', 2, 1, 1.11);
+
+INSERT INTO exchange_currency_rates (date, currency_from, currency_to, exchange_rate)
+    VALUES ('2015-03-01', 2, 1, 1.2);
+
+INSERT INTO exchange_currency_rates (date, currency_from, currency_to, exchange_rate)
+    VALUES ('2015-06-01', 2, 1, 1.3);

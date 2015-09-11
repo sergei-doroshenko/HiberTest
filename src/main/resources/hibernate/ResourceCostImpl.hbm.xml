@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="acl.domain.ResourceCost"
+           table="RESOURCE_COST"
+           entity-name="ResourceCost"
+           dynamic-insert="true"
+           dynamic-update="true">
+        <cache usage="read-write"/>
+
+        <id name="id" type="java.lang.Long" column="ID" unsaved-value="null">
+            <generator class="native"/>
+        </id>
+
+        <property name="startDate" type="java.sql.Date" column="START_DATE" not-null="true"/>
+
+        <property name="resourceId" type="java.lang.Long" column="RESOURCE_ID"/>
+
+        <property name="baseCost" type="java.math.BigDecimal" column="BASE_COST" not-null="true"/>
+
+        <many-to-one name="currency"
+                     column="CURRENCY_ID"
+                     entity-name="Currency_Full"
+                     not-null="true"
+                     foreign-key="fk_currency">
+        </many-to-one>
+
+    </class>
+</hibernate-mapping>

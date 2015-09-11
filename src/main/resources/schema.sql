@@ -65,10 +65,10 @@ CREATE TABLE res_skills
   skill_id BIGINT,
   CONSTRAINT skill_skilltype_fk FOREIGN KEY (skill_id) REFERENCES skill_types (id)
 );
-
+/****************************************************************************/
 CREATE TABLE currency
 (
-  id bigint NOT NULL,
+  id bigint NOT NULL IDENTITY,
   name VARCHAR(255) NOT NULL,
   letter_code VARCHAR(3) NOT NULL,
   digit_code VARCHAR(3) NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE currency
 
 CREATE TABLE resource
 (
-  id bigint NOT NULL,
+  id bigint NOT NULL IDENTITY,
   first_name VARCHAR(255) NOT NULL,
   last_name VARCHAR(255) NOT NULL,
   native_name VARCHAR(255),
@@ -101,7 +101,7 @@ CREATE TABLE resource
 
 CREATE TABLE resource_cost
 (
-  id bigint NOT NULL,
+  id bigint NOT NULL IDENTITY,
   start_date date NOT NULL,
   resource_id bigint NOT NULL,
   base_cost BIGINT NOT NULL,
@@ -115,7 +115,7 @@ CREATE TABLE resource_cost
 
 CREATE TABLE exchange_currency_rates
 (
-  id bigint NOT NULL,
+  id bigint NOT NULL IDENTITY,
   date timestamp NOT NULL,
   currency_from bigint NOT NULL,
   currency_to bigint NOT NULL,

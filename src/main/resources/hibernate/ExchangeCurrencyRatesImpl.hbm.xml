@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="acl.domain.ExchangeCurrencyRatesDO"
+           table="EXCHANGE_CURRENCY_RATES"
+           entity-name="ExchangeCurrencyRates_Full"
+           dynamic-insert="true"
+           dynamic-update="true"
+           batch-size="100">
+        <cache usage="read-write"/>
+
+        <id name="id" type="java.lang.Long" column="ID" unsaved-value="null">
+            <generator class="native"/>
+        </id>
+
+        <property name="date" type="java.util.Date" column="DATE" unique="true" not-null="true"/>
+
+        <many-to-one name="currencyFrom" column="CURRENCY_FROM" fetch="join"
+                     foreign-key="exchange_currency_rates_currency_from_fkey"
+                     not-null="true" entity-name="Currency_Full"
+                     insert="false" update="false"/>
+
+        <many-to-one name="currencyTo" column="CURRENCY_TO" fetch="join"
+                     foreign-key="exchange_currency_rates_currency_to_fkey"
+                     not-null="true" entity-name="Currency_Full"/>
+
+        <property name="exchangeRate" type="java.math.BigDecimal" column="EXCHANGE_RATE"/>
+
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="acl.domain.CurrencyDO"
+           table="CURRENCY"
+           entity-name="Currency_Full"
+           dynamic-insert="true"
+           dynamic-update="true"
+           batch-size="100">
+        <cache usage="read-write"/>
+
+        <id name="id" type="java.lang.Long" column="ID" unsaved-value="null">
+            <generator class="native"/>
+        </id>
+
+        <property name="name" type="java.lang.String" column="NAME" not-null="true"/>
+        <property name="letterCode" type="java.lang.String" column="LETTER_CODE" unique="true" not-null="true"/>
+        <property name="digitCode" type="java.lang.String" column="DIGIT_CODE" unique="true" not-null="true"/>
+        <property name="symbol" type="java.lang.String" column="SYMBOL" unique="true" not-null="true"/>
+        <property name="defaultCurrency" type="java.lang.Boolean" column="DEFAULT_CURRENCY" not-null="true"/>
+
+        <bag name="rates" cascade="all" lazy="false">
+            <key column="CURRENCY_FROM" not-null="true"/>
+            <one-to-many entity-name="ExchangeCurrencyRates_Full"/>
+        </bag>
+
+    </class>
+</hibernate-mapping>

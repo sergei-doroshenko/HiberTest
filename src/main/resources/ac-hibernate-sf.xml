@@ -10,5 +10,8 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
         <value>classpath:hibernate/Resource.hbm.xml</value>
         <value>classpath:hibernate/SkillType.hbm.xml</value>
         <value>classpath:hibernate/Skill.hbm.xml</value>
+        <value>classpath:hibernate/CurrencyImpl.hbm.xml</value>
+        <value>classpath:hibernate/ExchangeCurrencyRatesImpl.hbm.xml</value>
+        <value>classpath:hibernate/ResourceCostImpl.hbm.xml</value>
     </util:list>
 </beans>
