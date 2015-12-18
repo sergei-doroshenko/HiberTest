@@ -7,11 +7,14 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
     <util:list id="entitiesList">
-        <value>classpath:hibernate/Resource.hbm.xml</value>
-        <value>classpath:hibernate/SkillType.hbm.xml</value>
-        <value>classpath:hibernate/Skill.hbm.xml</value>
-        <value>classpath:hibernate/CurrencyImpl.hbm.xml</value>
-        <value>classpath:hibernate/ExchangeCurrencyRatesImpl.hbm.xml</value>
-        <value>classpath:hibernate/ResourceCostImpl.hbm.xml</value>
+        <!--<value>classpath:resources/hibernate/Resource.hbm.xml</value>
+        <value>classpath:resources/hibernate/SkillType.hbm.xml</value>
+        <value>classpath:resources/hibernate/Skill.hbm.xml</value>
+        <value>classpath:resources/hibernate/CurrencyImpl.hbm.xml</value>
+        <value>classpath:resources/hibernate/ExchangeCurrencyRatesImpl.hbm.xml</value>
+        <value>classpath:resources/hibernate/ResourceCostImpl.hbm.xml</value>-->
+        <!-- for badges example -->
+        <value>classpath:hibernate/Badge.hbm.xml</value>
+        <value>classpath:hibernate/ResourceBadge.hbm.xml</value>
     </util:list>
 </beans>

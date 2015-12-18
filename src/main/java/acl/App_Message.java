@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Sergei on 21.06.2015.
  */
-public class App1 {
+public class App_Message {
 
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");

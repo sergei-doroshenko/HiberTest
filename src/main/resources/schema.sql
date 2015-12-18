@@ -127,5 +127,25 @@ CREATE TABLE exchange_currency_rates
   CONSTRAINT exchange_currency_rates_currency_to_fkey FOREIGN KEY (currency_to)
   REFERENCES currency (id)
     ON UPDATE NO ACTION ON DELETE NO ACTION
-)
+);
+
+CREATE TABLE badge
+(
+  id BIGINT NOT NULL IDENTITY,
+  badge_name VARCHAR(255) NOT NULL,
+  effective_period SMALLINT NOT NULL,
+  CONSTRAINT badge_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE resource_badge
+(
+  id BIGINT NOT NULL IDENTITY,
+  badge_id BIGINT,
+  resource_badge_date DATE NOT NULL,
+  CONSTRAINT resource_badge_pkey PRIMARY KEY (id),
+  CONSTRAINT fk_badge FOREIGN KEY (badge_id) REFERENCES badge (id)
+    ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+
 

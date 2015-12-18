@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="acl.domain.resource">
+    <class name="acl.domain.badge.ResourceBadge" table="resource_badge" entity-name="ResourceBadge"
+           dynamic-insert="true" dynamic-update="true" >
+        <cache usage="read-write"/>
+        <id name="id" type="java.lang.Long" column="id">
+            <generator class="native"/>
+        </id>
+
+        <many-to-one name="badge"
+                     column="badge_id"
+                     entity-name="Badge"
+                     not-null="true"
+                     foreign-key="fk_badge"
+                     fetch="join"
+                     />
+
+        <!--<many-to-one name="phase"
+                     column="PHASE_TYPE_ID"
+                     entity-name="PhaseType_Full"
+                     not-null="true"
+                     foreign-key="PROJECT_PHASETYPE_FK"/>-->
+
+        <property name="date" type="java.util.Date" column="resource_badge_date"/>
+    </class>
+
+    <class name="acl.domain.badge.ResourceBadgeData" table="resource_badge" entity-name="ResourceBadgeData"
+           dynamic-insert="true" dynamic-update="true" >
+
+        <id name="id" type="java.lang.Long" column="id">
+            <generator class="native"/>
+        </id>
+
+        <property name="badgeId" type="java.lang.Long" column="badge_id"/>
+
+        <property name="date" type="java.util.Date" column="resource_badge_date"/>
+    </class>
+</hibernate-mapping>
