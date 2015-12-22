@@ -4,6 +4,7 @@ import acl.domain.badge.ResourceBadge;
 import acl.domain.badge.ResourceBadgeData;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.Projections;
@@ -87,6 +88,32 @@ public class ResourceBadgeDaoImpl extends BasicDaoImpl<ResourceBadge> {
 
         } finally {
 
+        }
+
+    }
+
+    @Transactional
+    public List<ResourceBadgeData> getResourceBadgeData3() {
+
+        try {
+            Session session = getSessionFactory().getCurrentSession();
+            List<ResourceBadgeData> result;
+
+            String sql = "select rb.id, rb.badge_id, rb.resource_badge_date from resource_badge rb " +
+                    "left join badge b on rb.badge_id=b.id " +
+                    "where b.effective_period > 5";
+            SQLQuery sqlQuery = session.createSQLQuery(sql);
+            sqlQuery.addEntity("ResourceBadgeData");
+            result = sqlQuery.list();
+
+            return result;
+        } catch (HibernateException e) {
+            String errorMessage = "Error when executing FindAll. entityName=" + ENTITY_NAME;
+            LOG.error(errorMessage);
+            throw new RuntimeException(errorMessage, e);
+
+        } finally {
+            printStatictics();
         }
 
     }

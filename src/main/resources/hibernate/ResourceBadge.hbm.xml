@@ -28,7 +28,7 @@
 
     <class name="acl.domain.badge.ResourceBadgeData" table="resource_badge" entity-name="ResourceBadgeData"
            dynamic-insert="true" dynamic-update="true" >
-
+        <cache usage="read-write"/>
         <id name="id" type="java.lang.Long" column="id">
             <generator class="native"/>
         </id>

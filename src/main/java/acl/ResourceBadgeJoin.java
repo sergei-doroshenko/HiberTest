@@ -19,7 +19,7 @@ public class ResourceBadgeJoin {
         BadgeDaoImpl dao = (BadgeDaoImpl) context.getBean("badgeDao");
         ResourceBadgeDaoImpl rbDao = (ResourceBadgeDaoImpl) context.getBean("resourceBadgeDao");
 
-        /*Badge b_0 = new Badge();
+        Badge b_0 = new Badge();
         b_0.setName("hello");
         b_0.setEffectivePeriod((short) 5);
         dao.save(b_0);
@@ -27,12 +27,12 @@ public class ResourceBadgeJoin {
         Badge b_1 = new Badge();
         b_1.setName("goodbye");
         b_1.setEffectivePeriod((short) 10);
-        dao.save(b_1);*/
+        dao.save(b_1);
 
         List<Badge> badges = dao.findAll();
         print(badges);
 
-        /*ResourceBadge rb_0 = new ResourceBadge();
+        ResourceBadge rb_0 = new ResourceBadge();
         rb_0.setName("test_0");
         rb_0.setBadge(b_0);
         rb_0.setDate(new Date());
@@ -42,7 +42,7 @@ public class ResourceBadgeJoin {
         rb_1.setName("test_1");
         rb_1.setBadge(b_1);
         rb_1.setDate(new Date());
-        rbDao.save(rb_1);*/
+        rbDao.save(rb_1);
 
         List<ResourceBadge> resourceBadges = rbDao.findAll();
         print(resourceBadges);
@@ -53,13 +53,15 @@ public class ResourceBadgeJoin {
         List<ResBadgeDataShort> badgeDataShort = rbDao.getResourceBadgeData2();
         print(badgeDataShort);
 
-
         badges = dao.findAll();
         print(badges);
+
+        List<ResourceBadgeData> data = rbDao.getResourceBadgeData3();
+        print(data);
         context.close();
     }
 
-    public static void print(List list) {
+    public static <T> void print(List<T> list) {
         list.stream().forEach(System.out::println);
         System.out.println();
     }
